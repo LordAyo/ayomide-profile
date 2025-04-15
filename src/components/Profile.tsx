@@ -81,7 +81,11 @@ const Overlay = styled(motion.div)`
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+  background: radial-gradient(
+    circle at center,
+    rgba(100, 108, 255, 0.7) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -92,15 +96,13 @@ const Overlay = styled(motion.div)`
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 
   span {
-    position: absolute;
-    bottom: 20%;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 1px;
-    background: linear-gradient(90deg, #646cff, #9089fc);
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #fff, #9089fc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
   }
 
   @media (max-width: 480px) {
@@ -442,17 +444,21 @@ const Profile: React.FC = () => {
             exit={{ opacity: 0 }}
             animate={{
               opacity: 1,
-              rotateY: [0, 5, 0, -5, 0],
+              rotateY: [0, 10, 0, -10, 0],
+              rotateZ: [0, 2, 0, -2, 0],
+              scale: [1, 1.03, 1, 1.03, 1],
               boxShadow: [
                 "0 10px 30px rgba(0, 0, 0, 0.3)",
-                "0 10px 30px rgba(100, 108, 255, 0.3)",
+                "0 15px 40px rgba(100, 108, 255, 0.4)",
+                "0 10px 30px rgba(0, 0, 0, 0.3)",
+                "0 15px 40px rgba(100, 108, 255, 0.4)",
                 "0 10px 30px rgba(0, 0, 0, 0.3)",
               ],
             }}
             transition={{
               boxShadow: {
                 repeat: Infinity,
-                duration: 2,
+                duration: 3,
                 ease: "easeInOut",
               },
               rotateY: {
@@ -460,19 +466,69 @@ const Profile: React.FC = () => {
                 duration: 10,
                 ease: "easeInOut",
               },
+              rotateZ: {
+                repeat: Infinity,
+                duration: 8,
+                ease: "easeInOut",
+              },
+              scale: {
+                repeat: Infinity,
+                duration: 8,
+                ease: "easeInOut",
+              },
             }}
             whileHover={{
-              scale: 1.05,
-              boxShadow: "0 15px 30px rgba(100, 108, 255, 0.4)",
+              scale: 1.1,
+              boxShadow: "0 20px 40px rgba(100, 108, 255, 0.6)",
+              rotate: [0, -5, 0, 5, 0],
+              transition: {
+                rotate: {
+                  repeat: Infinity,
+                  duration: 1.5,
+                  ease: "easeInOut",
+                },
+              },
             }}
           >
-            <ProfileImage src={profileImage} alt="Profile" loading="lazy" />
+            <ProfileImage
+              src={profileImage}
+              alt="Profile"
+              loading="lazy"
+              animate={{
+                filter: [
+                  "grayscale(100%)",
+                  "grayscale(80%)",
+                  "grayscale(100%)",
+                ],
+              }}
+              transition={{
+                filter: {
+                  repeat: Infinity,
+                  duration: 5,
+                  ease: "easeInOut",
+                },
+              }}
+              whileHover={{
+                filter: "grayscale(0%)",
+                scale: 1.05,
+                transition: { duration: 0.3 },
+              }}
+            />
             <Overlay
               initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              whileHover={{
+                opacity: 1,
+                scale: [1, 1.05, 1],
+              }}
+              transition={{
+                duration: 0.3,
+                scale: {
+                  repeat: Infinity,
+                  duration: 2,
+                },
+              }}
             >
-              <span>Click to explore</span>
+              <span>Discover My Story</span>
             </Overlay>
           </ProfileContainer>
         ) : (
@@ -555,7 +611,7 @@ const Profile: React.FC = () => {
               </ExpandedName>
 
               <ExpandedTitle {...textAnimation(0.3)}>
-                <span>Front-end Developer & UI?UX Developer</span>
+                <span>Front-end Developer & UI/UX Designer</span>
               </ExpandedTitle>
 
               <Bio {...textAnimation(0.4)}>

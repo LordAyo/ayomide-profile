@@ -133,15 +133,15 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Interactive Profile
+            Digital Playground | Ayo's Universe
           </Title>
           <Subtitle
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            Click on the profile image below to explore more information about
-            Ayomide and discover my skills, projects, and contact details.
+            Step into my digital realm — where design meets code. Tap my profile
+            to unlock the story behind the pixels.
           </Subtitle>
         </Header>
 
@@ -152,8 +152,7 @@ function App() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          © {new Date().getFullYear()} Ayomide Abioye • Built with React &
-          Framer Motion
+          Crafted with ♥ by Ayomide • Powered by Code & Creativity
         </Footer>
       </ContentWrapper>
     </AppContainer>
