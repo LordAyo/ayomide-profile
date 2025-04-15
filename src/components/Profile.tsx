@@ -555,7 +555,7 @@ const Profile: React.FC = () => {
               </ExpandedName>
 
               <ExpandedTitle {...textAnimation(0.3)}>
-                <span>Front-end Developer & Web Designer</span>
+                <span>Front-end Developer & UI?UX Developer</span>
               </ExpandedTitle>
 
               <Bio {...textAnimation(0.4)}>
