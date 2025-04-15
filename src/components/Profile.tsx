@@ -322,6 +322,7 @@ const PortfolioButton = styled(motion.a)`
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 1rem;
+  z-index: 1;
 
   &::before {
     content: "";
@@ -337,6 +338,7 @@ const PortfolioButton = styled(motion.a)`
       transparent
     );
     transition: all 0.5s;
+    z-index: -1;
   }
 
   &:hover::before {
@@ -671,14 +673,16 @@ const Profile: React.FC = () => {
 
               <PortfolioButton
                 href="https://lordayo.github.io/ayomide-portfolio/"
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.5 }}
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 10px 25px rgba(100, 108, 255, 0.6)",
+                  background:
+                    "linear-gradient(135deg, #535bf2 0%, #646cff 100%)",
+                  color: "white",
+                  textShadow: "0 0 5px rgba(255, 255, 255, 0.5)",
                 }}
                 whileTap={{ scale: 0.98 }}
               >
